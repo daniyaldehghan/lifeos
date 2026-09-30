@@ -101,7 +101,7 @@ export function NotificationBell() {
     localStorage.setItem("lifeos-notifications", JSON.stringify(updated));
   }
 
-  function markAsRead(id: number) {
+  function markAsRead(id: string) {
     const updated = notifications.map((notification) =>
       notification.id === id ? { ...notification, read: true } : notification
     );
@@ -118,7 +118,7 @@ export function NotificationBell() {
     saveNotifications(updated);
   }
 
-  function deleteNotification(id: number) {
+  function deleteNotification(id: string) {
     const updated = notifications.filter(
       (notification) => notification.id !== id
     );
