@@ -2,6 +2,7 @@
 import { generateNotifications } from "@/lib/notifications";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { emptyData, loadLifeOS, saveLifeOS } from "@/lib/storage";
+import { WelcomeModal } from "@/components/onboarding/WelcomeModal";
 import { LifeOSData } from "@/lib/types";
 
 interface AppContextValue {
@@ -66,7 +67,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     [data, ready, userName]
   );
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={value}>
+      {children}
+      <WelcomeModal />
+    </AppContext.Provider>
+  );
 }
 
 export function useLifeOS() {
